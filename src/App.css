@@ -1,0 +1,13 @@
+.loader-container {
+  display: flex; /* Use flexbox for easy centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Make the container take full viewport height */
+  width: 100vw; /* Make the container take full viewport width */
+  background-color: #1C1B29; /* Example: A dark background color matching your app theme */
+  position: fixed; /* Keep it fixed on top of everything */
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Ensure it's on top of other content */
+}
+
