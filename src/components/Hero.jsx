@@ -20,10 +20,6 @@ const logoimages = [logo1, logo2, logo3, logo4, logo5];
 
 const images = [image1, image2, image3, image4, image5];
 
-{
-  /*start------------------------------------------------------ */
-}
-
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
