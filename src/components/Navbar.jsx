@@ -1,16 +1,14 @@
-import { useState } from 'react'
-// import { HiMenu, HiX } from 'react-icons/hi'
-import { motion } from "framer-motion";
-import { fadeIn} from "../utils/motion";
-import { logoanimation } from '../utils/logoanimation';
-import logo from '../assets/game-controller.png';
+import { useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi";
+import { AnimatePresence, motion } from "framer-motion";
+import { fadeIn } from "../utils/motion";
+import { logoanimation } from "../utils/logoanimation";
+import logo from "../assets/game-controller.png";
 import { IoIosArrowDown } from "react-icons/io";
-// import { hamMenu } from '../utils/hamMenu';
-
 
 const Navbar = () => {
-  // const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeLink, setActiveLink] = useState('#home')
+  const [activeLink, setActiveLink] = useState("#home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { href: "#home", label: "Home" },
@@ -18,168 +16,137 @@ const Navbar = () => {
     { href: "#Trending", label: "Trending" },
     { href: "#Filter", label: "Filter" },
     { href: "#About Us", label: "About Us" },
-  ]
+  ];
 
   return (
-    <motion.nav 
-    
-      
+    <motion.nav
       initial="hidden"
-      whileInView="show" 
-      className="fixed top-0 left-0 right-0 py-4 h-24  backdrop-blur-xs z-50  "
+      whileInView="show"
+      className="fixed top-0 left-0 right-0 py-4 h-24  backdrop-blur-xs z-50 bg-amber-900 "
     >
+      <div className="flex justify-between items-centre  m-auto w-[80%] ">
+        {/*--------------------LOGO DIV-------------------*/}
+        <div className="flex-col items-center">
+          <a href="/">
+            <div className="flex">
+              <motion.img
+                src={logo}
+                className="h-8 w-auto mr-2  select-none"
+                variants={logoanimation()}
+              />
+              <h3 className="text-white select-none">prime</h3>
+            </div>
 
-
-      <div className="flex justify-between items-centre  m-auto w-[80%]">
-        
-        
-         <div className="flex-col items-center">
-        
-        <motion.div 
-          
-          className='flex'
- 
-        >
-         <motion.img src={logo} className="h-8 w-auto mr-2"  variants={logoanimation()} />
-         <h3 className='text-white'>prime</h3>
-         
-        </motion.div>
-
-        <div >
-
-          <h1 className='text-orange-500 font-bold text-2xl w-full'>Gaming</h1>
-
+            <div>
+              <h1 className="text-orange-500 font-bold text-2xl w-full  select-none">
+                Gaming
+              </h1>
+            </div>
+          </a>
         </div>
-        </div>
-
-        
-
-      
-      
-
-        
-        
-        
-        {/* Mobile Menu Button */}
-        {/* <motion.button 
-          variants={fadeIn('left', 0)}
+        {/* <================================================================> */}
+        {/* -------------------------Mobile Menu Button----------------------- */}
+        <motion.button
+          variants={fadeIn("left", 0)}
           className="md:hidden p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? (<HiX className="h-7 w-7" />) : (<HiMenu className="h-7 w-7" /> )}
-          
-        </motion.button> */}
+          {isMenuOpen ? (
+            <HiX className="h-8 w-8 text-white" />
+          ) : (
+            <HiMenu className="h-8 w-8 text-white" />
+          )}
+        </motion.button>
 
-        
-        
-      
-
-        {/*________Navigation Links - Desktop __________*/}
-        <motion.div 
-          variants={fadeIn('down', 0)}
-          className="flex items-center gap-20"
+        {/*________------------Navigation Links - Desktop--------------__________*/}
+        <div
+          className="md:flex items-center justify-center gap-20 hidden
+          "
         >
           {navLinks.map((link, index) => (
-            <motion.a 
+            <motion.a
               key={index}
-              variants={fadeIn('down', 0.2 * (index ))}
-              href={link.href }
+              variants={fadeIn("down", 0.2 * index)}
+              href={link.href}
               onClick={() => setActiveLink(link.href)}
-            className={
-                
-              `
-              flex  items-end
-                font-medium
-               ${activeLink === link.href ? 'text-orange-500' : 'text-white hover:text-orange-500'}
+              className={`
+              flex  items-center gap-1
+                font-medium 
+               ${
+                 activeLink === link.href
+                   ? "text-orange-500"
+                   : "text-white hover:text-orange-500"
+               }
                
-              `
-              
-              }
+              `}
             >
-              {link.label} <span><IoIosArrowDown  className='text-orange-500'/></span>
-
+              {link.label}
+              <div>
+                <IoIosArrowDown className="text-orange-500 mt-1" />
+              </div>
             </motion.a>
           ))}
-        </motion.div>
+        </div>
 
-         <div className="hidden [perspective::1000px] [transform-style:preserve-3d] md:flex gap-4 justify-center items-center  "
-          >
-          <motion.button
-          whileHover={{
-           
-           boxShadow:"0px 0px 20px #ffff",
-           
+        {/*----------------- SIGN UP AND LOGIN BUTTON --------------------*/}
 
-          }}
-
-          transition={{
-            duration:0.1,
-          }}
-          className="   group flex relative justify-center items-center p-3 bg-orange-500    cursor-pointer text-white font-medium text-16   h-10  w-24 rounded-2xl  "
-          
-          >
+        <div className="hidden  md:flex gap-4 justify-center items-center  ">
+          <button className="group flex hover:box-shad relative justify-center items-center p-3 bg-orange-500 cursor-pointer text-white font-medium text-16 h-10 w-24 rounded-2xl transition-all duration-300 hover:shadow-[0px_0px_10px_#ffffff] ">
             <span>Sign Up</span>
-            <span className="absolute inset-x-0 bottom-[-2px] bg-gradient-to-r from transparent via-white to-transparent h-[3px] w-3/4 m-auto blur-[2px] "></span>
+          </button>
 
-          <span className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 inset-x-0 bottom-[-2px] bg-gradient-to-r from transparent via-white to-transparent h-[6px] w-3/4 m-auto blur-[4px] "></span>
-        
-          </motion.button>
-
-          <button className=" flex  justify-center items-center pb-1 cursor-pointer  bg-transparent hover:bg-gray-700 hover:scale-105 transition-all text-orange-500 w-20 h-10 font-medium  text-16 rounded-3xl border border-orange-500"
-         
-          >
+          <button className=" flex  justify-center items-center pb-1 cursor-pointer  bg-transparent hover:bg-gray-700  transition-all duration-300 text-orange-500 w-20 h-10 font-medium  text-16 rounded-3xl border hover:text-white border-orange-500 ">
             Login
           </button>
         </div>
-
-
-
-
       </div>
 
-      {/* Mobile Menu*/}
-      {/* {isMenuOpen && (
-        <motion.div 
-    
-          className="md:hidden bg-white border-t border-gray-100 py-4"
-        >
-          <motion.div 
-            
-            className="container mx-auto px-4 space-y-4"
+      {/* ------------------------Mobile Menu--------------------------- */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="hidden"
+            animate="show"
+            exit={{ y: -30, opacity: 0 }}
+            className="md:hidden mt-10 z-50"
           >
-            {navLinks.map((link, index) => (
-              <motion.a
-                key={index}
-                
-                href={link.href}
-                onClick={() => {
-                  setActiveLink(link.href);
-                  setIsMenuOpen(false);
-                }}
-                className={`block text-sm font-medium py-2
-                  ${activeLink === link.href ? 'text-blue-600' : 'text-gray-600 hover:text-gray-900'}`}
-              >
-                {link.label}
-              </motion.a>
-            ))}
+            <motion.div className="container w-[80%] m-auto space-y-6">
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={index}
+                  href={link.href}
+                  variants={fadeIn("down", 0.1 * index)}
+                  onClick={() => {
+                    setActiveLink(link.href);
+                    setIsMenuOpen(false);
+                  }}
+                  className={`block text-center text-xl font-semibold py-2
+                  ${
+                    activeLink === link.href
+                      ? "text-orange-500"
+                      : "text-gray-600"
+                  }`}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
 
-            <div className='flex justify-center'>
-            <motion.button 
-              variants={hamMenu()}
-              initial="hidden"
-              whileInView="show" 
-              
-              className="w-40  bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 text-sm font-medium  hover:shadow-lg hover:shadow-blue-100"
-            >
-              Get in touch
-            </motion.button>
-
-            </div>
+              <div className="flex justify-center">
+                <motion.button
+                  variants={fadeIn("down", 0.5)}
+                  initial="hidden"
+                  animate="show"
+                  className="w-40 bg-orange-500 text-white px-6 py-3 rounded-lg  text-sm font-medium "
+                >
+                  Get in touch
+                </motion.button>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div> 
-      )} */}
+        )}
+      </AnimatePresence>
     </motion.nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

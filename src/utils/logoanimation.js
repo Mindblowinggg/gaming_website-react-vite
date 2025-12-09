@@ -1,38 +1,22 @@
-
-
-
-export const logoanimation = () => {  
-       
-
+export const logoanimation = () => {
   return {
     hidden: {
-      x:100,
-      y:200,
+      x: 100,
+      y: 350,
       opacity: 1,
-      scale:5,
-       
-    
-        
-      
-
-         
+      scale: 5,
     },
-    
+
     show: {
       y: 0,
       x: 0,
       opacity: 1,
-      scale:1,
-     
+      scale: 1,
+
       transition: {
-      
-        duration:2,
-        type:"spring",
-       
-        
-    
-        }
+        duration: 1.8,
+        type: "spring",
       },
-    
+    },
   };
 };

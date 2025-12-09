@@ -21,35 +21,15 @@ function App() {
   }, []);
   return (
     <div>
-      {loading ? (
-        <div className="loader-container">
-          <ClimbingBoxLoader
-            color={"#de5c13"}
-            loading={loading}
-            size={30}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
-      ) : (
-        <div>
-          <Navbar />
-          <Hero />
-          <Categories />
-          <div className="w-full h-[100px] bg-[#1C1B29]">
-            {/*made a div for a gap*/}
-          </div>
-          <Trending />
-          <div className="w-full h-[100px] bg-[#1C1B29]">
-            {/*made a div for a gap*/}
-          </div>
-          <Gameofmonth />
-          
-          <FAQ />
+      <Navbar />
 
-          <Footer />
-        </div>
-      )}
+      {/* <Trending />
+
+      <Gameofmonth />
+
+      <FAQ />
+
+      <Footer /> */}
     </div>
   );
 }
