@@ -108,7 +108,7 @@ const Navbar = () => {
             initial="hidden"
             animate="show"
             exit={{ y: -30, opacity: 0 }}
-            className="md:hidden mt-10 z-50"
+            className="md:hidden mt-10 py-10 z-90 backdrop-blur-2xl bg-gray-100"
           >
             <motion.div className="container w-[80%] m-auto space-y-6">
               {navLinks.map((link, index) => (

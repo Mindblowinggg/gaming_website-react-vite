@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { fadeIn } from "../utils/motion";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import image1 from "../assets/witcherbig.png";
 import image2 from "../assets/rdr2big.png";
 import image3 from "../assets/gowbig.png";
@@ -24,44 +24,45 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    setCurrentIndex((currentIndex) => (currentIndex + 1) % images.length);
+    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   const prevSlide = () => {
-    setCurrentIndex(
-      (currentIndex) => (currentIndex - 1 + images.length) % images.length
-    );
+    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   return (
-    <div className="relative h-full w-full  overflow-hidden">
+    <div className="relative xl:h-full md:h-full lg:h-full w-full h-[70vh]  overflow-hidden bg-black">
       <motion.img
+        key={currentIndex}
         src={images[currentIndex]}
-        className=" h-full w-full object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+        className="h-full w-full object-cover "
       />
 
-      <div className="absolute top-[9%]  left-[10%] right-[10%] m-auto  w-[80%] h-155 ">
-        {/*centred div*/}
-
+      <div className="absolute top-[9%] left-[10%] right-[10%] m-auto w-[80%] h-155 ">
         {/*left div-------------*/}
         <motion.div
-          className=" text-white h-full  w-84 gap-8 relative "
+          className=" text-white h-full xl:w-1/4 w-[80%] gap-8 relative "
           variants={fadeIn("right", 0.1)}
           initial="hidden"
-          whileInView="show"
+          animate="show"
         >
-          <div className="bottom-0 absolute ">
+          <div className="xl:bottom-0 lg:bottom-2 absolute">
             {/*left ke andar wala inside div*/}
 
             <h2 className="text-4xl font-bold  mb-8">
               {imageinfo[currentIndex].title}
             </h2>
 
-            <p className="text-gray-300  text-justify mb-8">
+            <p className="text-gray-300 text-justify mb-8">
               {imageinfo[currentIndex].description}
             </p>
 
-            <div className="flex  mb-8">
+            <div className="flex mb-8  w-[80%]  md:w-1/2 lg:w-[50%] xl:w-full">
               <div className="flex gap-2">
                 <div>
                   <img src={m} alt="m logo" />
@@ -84,7 +85,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex justify-between mb-8">
+            <div className="flex justify-between mb-8 xl:w-full lg:w-[80%] md:w-1/2 W-1/2">
               <div>
                 <h3 className="text-md font-semibold text-center text-gray-300 mb-1">
                   Available For:
@@ -103,7 +104,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="flex justify-between  mb-8">
+            <div className="flex justify-between mb-8 xl:w-full lg:w-[80%] md:w-[70%] W-1/2">
               <button className="bg-gray-800 text-white w-24 hover:scale-110 transition-all rounded-md px-4 py-2 cursor-pointer text-sm">
                 {imageinfo[currentIndex].pc}
               </button>
@@ -128,12 +129,13 @@ const Hero = () => {
 
         {/*right side div   */}
 
-        <div className=" right div   h-[50%] w-[68%] absolute bottom-0 right-0 ">
-          <div className="flex justify-between gap-4 items-center text-xl   font-semibold">
-            <p className="text-white ">
-              The Most <span className="text-orange-500 ">Popular </span>Games
+        <div className=" right div h-[50%] w-[60%] absolute bottom-0 right-0 ">
+          <div className="flex justify-between gap-4 items-center text-xl font-semibold">
+            <p className="text-white xl:flex hidden">
+              The Most <span className="text-orange-500 mx-2 ">Popular</span>
+              Games
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-5 absolute xl:right-0 right-3 bottom-[50%] xl:bottom-full ">
               <motion.button
                 whileTap={{ scale: 0.7 }}
                 transition={{ duration: 0.2 }}
@@ -154,7 +156,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="w-full h-full">
+          <div className="w-full h-full xl:flex hidden">
             <div className="flex absolute bottom-0  box-border gap-4 h-[72%] w-full">
               {logoimages.map((logo, index) => (
                 <div
