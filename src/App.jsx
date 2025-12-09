@@ -22,6 +22,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <Hero />
 
       {/* <Trending />
 

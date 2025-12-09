@@ -22,7 +22,7 @@ const Navbar = () => {
     <motion.nav
       initial="hidden"
       whileInView="show"
-      className="fixed top-0 left-0 right-0 py-4 h-24  backdrop-blur-xs z-50 bg-amber-900 "
+      className="fixed top-0 left-0 right-0 py-4 h-24  backdrop-blur-xs z-50  "
     >
       <div className="flex justify-between items-centre  m-auto w-[80%] ">
         {/*--------------------LOGO DIV-------------------*/}
@@ -48,7 +48,7 @@ const Navbar = () => {
         {/* -------------------------Mobile Menu Button----------------------- */}
         <motion.button
           variants={fadeIn("left", 0)}
-          className="md:hidden p-2"
+          className="lg:hidden p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? (
@@ -60,7 +60,7 @@ const Navbar = () => {
 
         {/*________------------Navigation Links - Desktop--------------__________*/}
         <div
-          className="md:flex items-center justify-center gap-20 hidden
+          className="lg:flex items-center justify-center lg:gap-9 xl:gap-20 hidden 
           "
         >
           {navLinks.map((link, index) => (
@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/*----------------- SIGN UP AND LOGIN BUTTON --------------------*/}
 
-        <div className="hidden  md:flex gap-4 justify-center items-center  ">
+        <div className="hidden  lg:flex gap-4 justify-center items-center  ">
           <button className="group flex hover:box-shad relative justify-center items-center p-3 bg-orange-500 cursor-pointer text-white font-medium text-16 h-10 w-24 rounded-2xl transition-all duration-300 hover:shadow-[0px_0px_10px_#ffffff] ">
             <span>Sign Up</span>
           </button>
