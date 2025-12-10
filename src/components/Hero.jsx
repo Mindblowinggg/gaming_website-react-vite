@@ -40,7 +40,7 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1 }}
-        className="h-full w-full object-cover "
+        className="h-full w-full md:object-cover object-cover"
       />
 
       <div className="absolute top-[9%] left-[10%] right-[10%] m-auto w-[80%] h-155 ">
@@ -54,15 +54,18 @@ const Hero = () => {
           <div className="xl:bottom-0 lg:bottom-2 absolute">
             {/*left ke andar wala inside div*/}
 
-            <h2 className="text-4xl font-bold  mb-8">
+            <h2 className="text-4xl font-bold absolute top-1/2 md:relative xl:flex mb-8">
               {imageinfo[currentIndex].title}
             </h2>
 
-            <p className="text-gray-300 text-justify mb-8">
+            <p className="text-gray-300 text-justify lg:text-lg hidden lg:flex lg:mb-10  xl:mb-8 lg:w-[40%] xl:w-full">
               {imageinfo[currentIndex].description}
             </p>
-
-            <div className="flex mb-8  w-[80%]  md:w-1/2 lg:w-[50%] xl:w-full">
+            {/* ------------------------RATING AND DATE ------------------------ */}
+            <div
+              className="flex mb-8 mt-100 md:relative w-[80%] md:justify-between
+             md:w-full lg:w-[50%] xl:w-full"
+            >
               <div className="flex gap-2">
                 <div>
                   <img src={m} alt="m logo" />
@@ -76,7 +79,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="ml-auto flex items-center">
+              <div className="ml-5 flex justify-center items-center">
                 <img className="mr-2" src={calendar} alt="" />
 
                 <span className="text-gray-300">
@@ -84,27 +87,27 @@ const Hero = () => {
                 </span>
               </div>
             </div>
-
-            <div className="flex justify-between mb-8 xl:w-full lg:w-[80%] md:w-1/2 W-1/2">
+            {/* ----------------------AVAILABLE FOR AND GENRE----------------------- */}
+            <div className=" xl:justify-between gap-10 w-fit mb-8 xl:w-full lg:w-[80%] md:w-1/2 W-1/2 hidden md:flex">
               <div>
                 <h3 className="text-md font-semibold text-center text-gray-300 mb-1">
                   Available For:
                 </h3>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-400 text-center">
                   {imageinfo[currentIndex].availablefor}
                 </p>
               </div>
               <div>
-                <h3 className="text-md font-semibold text-center text-gray-300 mb-1">
+                <h3 className="text-md  font-semibold text-center text-gray-300 mb-1">
                   Genre:
                 </h3>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-center text-gray-400">
                   {imageinfo[currentIndex].genre}
                 </p>
               </div>
             </div>
-
-            <div className="flex justify-between mb-8 xl:w-full lg:w-[80%] md:w-[70%] W-1/2">
+            {/* ------------------AVAILABLE ON WHICH PLATFORM---------------- */}
+            <div className="hidden md:flex justify-between mb-8 xl:w-full lg:w-[80%] md:w-[70%] W-1/2">
               <button className="bg-gray-800 text-white w-24 hover:scale-110 transition-all rounded-md px-4 py-2 cursor-pointer text-sm">
                 {imageinfo[currentIndex].pc}
               </button>
@@ -115,9 +118,9 @@ const Hero = () => {
                 {imageinfo[currentIndex].ps5}
               </button>
             </div>
-
-            <div className="flex justify-between ">
-              <button className="bg-[#FF5733]   cursor-pointer text-white font-bold mb- py-3 px-6 rounded-3xl hover:scale-105 transition-all w-36">
+            {/*-------------------- BUY NOW AND REVIEW BUTTON---------------- */}
+            <div className="flex mt-10 gap-8 ">
+              <button className="bg-[#FF5733] cursor-pointer text-white font-bold mb- py-3 px-6 rounded-3xl hover:scale-105 transition-all w-36">
                 Buy Now
               </button>
               <button className="bg-transparent border cursor-pointer border-red-500  text-red-500 font-bold py-3 px-6  rounded-3xl hover:scale-105 transition-all w-44">
@@ -135,11 +138,13 @@ const Hero = () => {
               The Most <span className="text-orange-500 mx-2 ">Popular</span>
               Games
             </p>
-            <div className="flex gap-5 absolute xl:right-0 right-3 bottom-[50%] xl:bottom-full ">
+
+            {/*---------------------- NEXT PREV BUTTONS ------------------------- */}
+            <div className="flex gap-5 absolute right-0 bottom-[60%] xl:right-0 md:right-3 md:bottom-[50%] xl:bottom-full ">
               <motion.button
                 whileTap={{ scale: 0.7 }}
                 transition={{ duration: 0.2 }}
-                className="  w-12 h-12 rounded-xl  text-white  border border-white flex items-center justify-center hover:bg-orange-500 hover:scale-110  hover:text-white cursor-pointer transition-all"
+                className="w-12 h-12 rounded-xl  text-white  border border-white flex items-center justify-center hover:bg-orange-500 hover:scale-110  hover:text-white cursor-pointer transition-all"
                 onClick={prevSlide}
               >
                 <BsChevronLeft className="w-6 h-6" />
