@@ -24,13 +24,13 @@ function App() {
       <Navbar />
       <Hero />
 
-      {/* <Trending />
+      <Trending />
 
       <Gameofmonth />
 
       <FAQ />
 
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
